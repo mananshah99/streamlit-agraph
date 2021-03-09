@@ -6,6 +6,17 @@ import {
 import React, { ReactNode } from "react";
 
 import { Graph } from "react-d3-graph";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import $ from "jquery";
+import "bootstrap";
+
+/*
+Object.assign(global, {
+    $: jquery,
+    jQuery: jquery,
+});
+*/
 
 interface State {
   numClicks: number
@@ -44,7 +55,14 @@ class AgraphComponent extends StreamlitComponentBase<State> {
     };
 
     const onClickNode = function(nodeId: any) {
-        window.alert(`Clicked node ${nodeId}`);
+        //window.alert(`Clicked node ${nodeId}`);
+        var node_sentences = data["other_data"][nodeId];
+        window.alert(node_sentences);
+        //$('#myModalTitle').html('a');
+        //$('#myModalBody').html('<p>a</p>');
+        //$('#myModal').modal("show");     
+        //toast.configure();
+        //toast(`Sentences are ${node_sentences[0]}`);
     };
 
     const onDoubleClickNode = function(nodeId: any) {
@@ -64,7 +82,8 @@ class AgraphComponent extends StreamlitComponentBase<State> {
     };
 
     const onClickLink = function(source: any, target: any) {
-        window.alert(`Clicked link between ${source} and ${target}`);
+        window.alert(`Clicked link between saldkjsa ${source} and ${target}`);
+        console.log(data);
     };
 
     const onRightClickLink = function(event: any, source: any, target: any) {

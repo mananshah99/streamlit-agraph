@@ -71,6 +71,12 @@ class Node:
 
   def to_dict(self):
     return self.__dict__
+  
+  def __eq__(self, other):
+    return self.id == other.id
+  
+  def __hash__(self):
+    return hash(self.id)
 
 class Edge:
   def __init__(self, source, target,
@@ -162,7 +168,7 @@ class GraphAlgos:
 # def parse_node(*args):
 #  nodes_data = [{"id": f"{node}"} for node in nodes]
 
-def agraph(nodes, edges, config):
+def agraph(nodes, edges, config, other_data=[]):
 
     nodes_data = [ node.to_dict() for node in nodes]
     edges_data = [ edge.to_dict() for edge in edges]
@@ -173,7 +179,7 @@ def agraph(nodes, edges, config):
     config_json = json.dumps(config.__dict__)
     # st.write(config_json)
 
-    data = { "nodes": nodes_data, "links": edges_data}
+    data = { "nodes": nodes_data, "links": edges_data, "other_data": other_data}
     # st.write(data)
     data_json = json.dumps(data)
     component_value = _agraph(data=data_json, config=config_json)
