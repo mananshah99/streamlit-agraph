@@ -57,7 +57,7 @@ class AgraphComponent extends StreamlitComponentBase<State> {
     const onClickNode = function(nodeId: any) {
         //window.alert(`Clicked node ${nodeId}`);
         var node_sentences = data["other_data"][nodeId];
-        window.alert(node_sentences);
+        window.alert(node_sentences.join("\n\n"));
         //$('#myModalTitle').html('a');
         //$('#myModalBody').html('<p>a</p>');
         //$('#myModal').modal("show");     
